@@ -52,9 +52,9 @@ Winslop targets **slop**, not Windows.
 Also no.
 
 Winslop doesn’t care whether something is AI, scripted, cloud-based or hand-written.  
-If it’s forced, opaque, or unnecessary — it’s slop.
+If it’s forced, opaque, or unnecessary, its slop.
 
-If it’s optional, transparent and useful — it’s fine.
+If it’s optional, transparent and useful, it’s fine.
 </details>
 
 
