@@ -3,7 +3,9 @@
 > 
 > Slop describes unnecessary, low-value system components that are added by default, consume resources, and reduce user control without providing meaningful benefit.
 
-<img width="486" height="578" alt="Winslop_E16k1RESTj" src="https://github.com/user-attachments/assets/29d7bc19-a4a3-48d5-8499-1c80a2ecc1a2" />
+
+<img width="486" height="578" alt="Winslop_lI3rPyDJ33" src="https://github.com/user-attachments/assets/c2748fa1-af16-47ee-a1e4-d7ec9800bf7e" />
+
 
 This started as a joke.
 Then Microsoft said “slop vs sophistication” out loud and it stopped being one.
