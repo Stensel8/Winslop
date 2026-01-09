@@ -4,7 +4,7 @@
 > Slop describes unnecessary, low-value system components that are added by default, consume resources, and reduce user control without providing meaningful benefit.
 
 
-<img width="486" height="578" alt="Winslop_PZ65Qqx2VP" src="https://github.com/user-attachments/assets/6668fa66-9602-42bd-874d-842a0dc4e60d" />
+<img width="486" height="578" alt="Winslop_tiS91YERxG" src="https://github.com/user-attachments/assets/ec7b1962-8cd1-42cc-9d94-be616e4d1295" />
 
 
 This started as a joke.
