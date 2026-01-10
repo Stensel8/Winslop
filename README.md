@@ -127,9 +127,26 @@ Less slop.
 
 Because Microsoft said *“slop vs sophistication”* out loud.
 
-And because Windows isn’t bad.  
+And because Windows isn't bad.  
 The slop is.
+
+Winslop is **anti-slop by design**.
+
+That’s why the UI is intentionally small, plain and functional.
+No glossy visuals.  
+No animations.  
+No AI-generated fluff.
+
+Slop comes in many forms:
+- **AI slop** > mass-produced, soulless output
+- **Feature slop** > unnecessary features that make UX worse
+- **UX / Design slop** > bloated, unclear interfaces
+- **Corporate slop** > buzzwords, filler and dark patterns
+
+Winslop does the opposite:
+It removes more than it adds.
 </details>
+
 
 
 <details>
