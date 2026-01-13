@@ -85,3 +85,44 @@ Some builds also support auto-loading `selection.sel` from the same folder as th
 
 This tool changes Windows settings. Use **Inspect** first, review what is checked, then **Apply**.
 Some changes may require sign-out or restart to fully take effect.
+
+---
+
+## FAQ
+
+<details>
+<summary><strong>What’s the easiest way to share or restore my selections?</strong></summary>
+
+Use the new **Export/Import** feature for TreeList selections.
+
+If you place **`winslop-selection.sel`** in the same folder as **`Winslop.exe`**, Winslop will detect it automatically and offer an import.
+</details>
+
+<details>
+<summary><strong>Where can I inspect the logs in a readable way?</strong></summary>
+
+Use the built-in **Online Log Inspector**.
+
+Open **Actions** → **[Log Inspector](https://builtbybel.github.io/Winslop/log-inspector/index.html)** to view the full log in a clean, structured format.
+</details>
+
+<details>
+<summary><strong>Why are the footer hotkeys gone?</strong></summary>
+
+Because the main actions are already reachable in **one or two clicks**.
+
+Less noise, same speed.
+</details>
+
+<details>
+<summary><strong>What about plugins?</strong></summary>
+
+Plugins are **optional tools** that add extra features to Winslop.
+
+You can install and manage them via **Main Menu → Manage plugins**.  
+Once installed, you’ll find them in the main tree under the **Plugins** section.
+
+Anyone can create plugins — a small demo pack + explanation is here:  
+https://github.com/builtbybel/CrapFixer/blob/main/plugins/DemoPluginPack.ps1
+</details>
+
