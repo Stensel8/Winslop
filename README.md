@@ -54,6 +54,15 @@ Winslop targets **slop**, not Windows.
 </details>
 
 <details>
+<summary><strong>Is there a help file / quick start guide?</strong></summary>
+
+Yes.  
+There's a small, lightweight entry guide to get you going:
+
+- **Quick Start / Help:** https://github.com/builtbybel/Winslop/blob/main/Help.md
+</details>
+
+<details>
 <summary><strong>Is this an anti-AI project?</strong></summary>
 
 Also no.
