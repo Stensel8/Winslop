@@ -1,3 +1,12 @@
+> Looking for detailed descriptions of every toggle / tweak?
+> See the full **Feature Reference** here: **[features.md](features.md)**  
+> (Includes registry keys, value names, recommended values, undo values, and plugin notes.)
+
+Quick links:
+- Feature Reference: [features.md](features.md)
+- Plugins section in Feature Reference: [features.md#plugins](features.md#plugins)
+
+
 ## Quick start
 
 1. Open **Winslop.exe**
