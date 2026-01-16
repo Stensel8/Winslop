@@ -11,6 +11,9 @@
 - [AI (Copilot & Recall)](#ai-copilot--recall)
 - [Plugins](#plugins)
 
+> Want to create your own plugin?  
+> See: **[How to create plugins](https://github.com/builtbybel/CrapFixer/blob/main/plugins/DemoPluginPack.ps1)**.
+
 ---
 
 ## Issues & Maintenance
