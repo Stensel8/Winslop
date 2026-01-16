@@ -20,6 +20,7 @@
 - Deletes files in: `%LOCALAPPDATA%\Temp`
 - Runs: `cleanmgr.exe /sageset:1`
 - Runs: `cleanmgr.exe /sagerun:1` and `cleanmgr.exe /verylowdisk`
+
 **Undo:** Not supported (cleanup cannot be undone)
 
 ### Winget App Updates
@@ -27,6 +28,7 @@
 **Commands:**
 - Check: `winget upgrade --include-unknown`
 - Install: `winget upgrade --all --include-unknown`
+
 **Undo:** Not supported (winget upgrades cannot be undone)
 
 ## System
