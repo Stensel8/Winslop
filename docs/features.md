@@ -172,7 +172,6 @@
 **Value:** `NewTabPageQuickLinksEnabled`  
 **Recommended:** `0`  
 **Undo:** `1`  
-:contentReference[oaicite:0]{index=0}
 
 ### Don't Submit user feedback option
 **Info:** Disables the “Submit feedback” option in Microsoft Edge.  
@@ -180,8 +179,6 @@
 **Value:** `UserFeedbackAllowed`  
 **Recommended:** `0`  
 **Undo:** `1`  
-:contentReference[oaicite:1]{index=1}
-
 
 ## UI & Personalization
 
