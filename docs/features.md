@@ -1,19 +1,203 @@
 # Features
 
 ## Table of contents
-- [Start Menu & Taskbar](#start-menu--taskbar)
-- [Search & Web Integration](#search--web-integration)
-- [Window Management](#window-management)
-- [Privacy & Telemetry](#privacy--telemetry)
-- [Power & Shutdown](#power--shutdown)
+- [Issues & Maintenance](#issues)
+- [System](#system)
+- [Microsoft Edge](#microsoft-edge)
 - [UI & Personalization](#ui--personalization)
-- [File Explorer & Context Menus](#file-explorer--context-menus)
-- [Performance & Multimedia Scheduling](#performance--multimedia-scheduling)
-- [System & Diagnostics](#system--diagnostics)
+- [Gaming](#gaming)
+- [Privacy & Telemetry](#privacy--telemetry)
+- [Ads & Recommendations](#ads--recommendations)
+- [AI (Copilot & Recall)](#ai-copilot--recall)
 
 ---
 
-## Start Menu & Taskbar
+## Issues & Maintenance
+
+### Basic Disk Cleanup
+**Info:** Deletes all temporary files from the user's Temp folder. Then, the built-in Disk Cleanup utility (cleanmgr) is run.  
+**Actions:**
+- Deletes files in: `%LOCALAPPDATA%\Temp`
+- Runs: `cleanmgr.exe /sageset:1`
+- Runs: `cleanmgr.exe /sagerun:1` and `cleanmgr.exe /verylowdisk`
+**Undo:** Not supported (cleanup cannot be undone)
+
+### Winget App Updates
+**Info:** Automatically searches for available app updates using the Windows package manager 'winget' and installs them in a new Windows Terminal window. It runs `winget upgrade --include-unknown` to list all available updates, including manually installed apps, and then `winget upgrade --all --include-unknown` to install them. No manual interaction is required.  
+**Commands:**
+- Check: `winget upgrade --include-unknown`
+- Install: `winget upgrade --all --include-unknown`
+**Undo:** Not supported (winget upgrades cannot be undone)
+
+## System
+
+### Show BSOD details instead of sad smiley
+**Info:** This method displays the full classic BSOD with technical error details instead of the simplified sad face version.  
+**Registry:** `HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\CrashControl`  
+**Values:** `DisplayParameters = 1`, `DisableEmoticon = 1`  
+**Undo:** `DisplayParameters = 0`, `DisableEmoticon = 0`
+
+### Enable Verbose Logon status messages
+**Info:** This method allows you to see what processes are hanging when shutting down and turning on the machine.  
+**Registry:** `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System`  
+**Value:** `VerboseStatus`  
+**Recommended:** `1`  
+**Undo:** `0`
+
+### Speed Up Shutdown Time
+**Info:** This feature reduces the WaitToKillServiceTimeout value...  
+**Registry:** `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control`  
+**Value:** `WaitToKillServiceTimeout`  
+**Recommended:** `"1000"`  
+**Undo:** `"5000"`
+
+### Disable Network Throttling
+**Info:** Disables the Windows network throttling mechanism...  
+**Registry:** `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile`  
+**Value:** `NetworkThrottlingIndex`  
+**Recommended:** `0xFFFFFFFF` (decimal 4294967295)  
+**Undo:** `10`
+
+### Optimize System Responsiveness
+**Info:** Enhances system responsiveness by prioritizing CPU resources for foreground tasks...  
+**Registry:** `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile`  
+**Value:** `SystemResponsiveness`  
+**Recommended:** `10`  
+**Undo:** `20`
+
+### Speed Up Menu Show Delay
+**Info:** Speeds up the appearance of menus and submenus...  
+**Registry:** `HKEY_CURRENT_USER\Control Panel\Desktop`  
+**Value:** `MenuShowDelay`  
+**Recommended:** `"10"`  
+**Undo:** `"400"`
+
+### Disable Hibernation
+**Info:** Hibernation is mostly useful for laptops... Disabling it frees resources and avoids confusion by hiding the Hibernate option...  
+**Registry 1:** `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power` → `HibernateEnabled = 0`  
+**Registry 2:** `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings` → `ShowHibernateOption = 0`  
+**Command:** `powercfg /hibernate off`  
+**Undo:** `HibernateEnabled = 1`, `ShowHibernateOption = 1`, `powercfg /hibernate on`
+
+### Enable End Task
+**Info:** Adds 'End Task' to the Windows 11 taskbar context menu, allowing you to directly kill unresponsive apps.  
+**Registry:** `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\TaskbarDeveloperSettings`  
+**Value:** `TaskbarEndTask`  
+**Recommended:** `1`  
+**Undo:** `0`
+
+---
+
+## Microsoft Edge
+
+### Disable Browser sign in and sync services
+**Info:** Disables Microsoft Edge browser sign-in and sync services via policy.  
+**Registry:** `HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Edge`  
+**Value:** `BrowserSignin`  
+**Recommended:** `0`  
+**Undo:** `1`  
+
+### Don't Show Sponsored links in new tab page
+**Info:** Hides sponsored/default top sites on the Edge new tab page.  
+**Registry:** `HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Edge`  
+**Value:** `NewTabPageHideDefaultTopSites`  
+**Recommended:** `1`  
+**Undo:** `0`  
+
+### Disable Microsoft Edge as default browser
+**Info:** Prevents Microsoft Edge from being set as the default browser (policy controlled).  
+**Registry:** `HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Edge`  
+**Value:** `DefaultBrowserSettingEnabled`  
+**Recommended:** `0`  
+**Undo:** `1`  
+
+### Disable Access to Collections feature
+**Info:** Disables the Edge Collections feature.  
+**Registry:** `HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Edge`  
+**Value:** `EdgeCollectionsEnabled`  
+**Recommended:** `0`  
+**Undo:** `1`  
+
+### Disable Shopping assistant
+**Info:** Disables the Edge Shopping Assistant feature.  
+**Registry:** `HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Edge`  
+**Value:** `EdgeShoppingAssistantEnabled`  
+**Recommended:** `0`  
+**Undo:** `1`  
+
+### Don't Show First Run Experience
+**Info:** Hides the Edge first run experience on launch.  
+**Registry:** `HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Edge`  
+**Value:** `HideFirstRunExperience`  
+**Recommended:** `1`  
+**Undo:** `0`  
+
+### Disable Gamer Mode
+**Info:** Disables Edge Gamer Mode.  
+**Registry:** `HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Edge`  
+**Value:** `GamerModeEnabled`  
+**Recommended:** `0`  
+**Undo:** `1`  
+
+### Disable Copilot Symbol in Edge
+**Info:** Disables the Copilot/Hub sidebar symbol in Microsoft Edge.  
+**Registry:** `HKEY_CURRENT_USER\Software\Policies\Microsoft\Edge`  
+**Value:** `HubsSidebarEnabled`  
+**Recommended:** `0`  
+**Undo:** `1`  
+
+### Don't Allow to Import of data from other browsers on each launch
+**Info:** Disables importing of browser data from other browsers on each launch.  
+**Registry:** `HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Edge`  
+**Value:** `ImportOnEachLaunch`  
+**Recommended:** `0`  
+**Undo:** `1`  
+
+### Disable Start Boost
+**Info:** Disables Microsoft Edge Startup Boost.  
+**Registry:** `HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Edge`  
+**Value:** `StartupBoostEnabled`  
+**Recommended:** `0`  
+**Undo:** `1`  
+
+### Don't Show Quick links in new tab page
+**Info:** Disables “Quick links” on the Microsoft Edge new tab page.  
+**Registry:** `HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Edge`  
+**Value:** `NewTabPageQuickLinksEnabled`  
+**Recommended:** `0`  
+**Undo:** `1`  
+:contentReference[oaicite:0]{index=0}
+
+### Don't Submit user feedback option
+**Info:** Disables the “Submit feedback” option in Microsoft Edge.  
+**Registry:** `HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Edge`  
+**Value:** `UserFeedbackAllowed`  
+**Recommended:** `0`  
+**Undo:** `1`  
+:contentReference[oaicite:1]{index=1}
+
+
+## UI & Personalization
+
+### Show Full context menus in Windows 11
+**Info:** This feature will enable full context menus  
+**Registry:** `HKEY_CURRENT_USER\SOFTWARE\CLASSES\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32`  
+**Value:** `(Default)` set to empty string  
+**Undo:** Deletes `Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}`
+
+### Don't use personalized lock screen
+**Info:** This feature will disable the personalized lock screen.  
+**Registry:** `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Personalization`  
+**Value:** `NoLockScreen`  
+**DoFeature sets:** `1`  
+**Undo:** `0`
+
+### Hide search box on taskbar
+**Info:** This feature will hide search box on taskbar  
+**Registry:** `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search`  
+**Value:** `SearchboxTaskbarMode`  
+**Recommended:** `0`  
+**Undo:** `2`
 
 ### Hide Most used apps in start menu
 **Info:** This feature will hide Most used apps in start menu for all users  
@@ -29,38 +213,6 @@
 **Recommended:** `0`  
 **Undo:** `1`
 
-### Hide search box on taskbar
-**Info:** This feature will hide search box on taskbar  
-**Registry:** `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search`  
-**Value:** `SearchboxTaskbarMode`  
-**Recommended:** `0`  
-**Undo:** `2`
-
-### Align Start button to left
-**Info:** This feature will align the Start button to left  
-**Registry:** `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced`  
-**Value:** `TaskbarAl`  
-**Recommended:** `0`  
-**Undo:** `1`
-
-### Enable End Task
-**Info:** Adds 'End Task' to the Windows 11 taskbar context menu, allowing you to directly kill unresponsive apps.  
-**Registry:** `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\TaskbarDeveloperSettings`  
-**Value:** `TaskbarEndTask`  
-**Recommended:** `1`  
-**Undo:** `0`
-
-### Pin more Apps on start menu
-**Info:** This feature will allow pinning more Apps on start menu  
-**Registry:** `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced`  
-**Value:** `Start_Layout`  
-**Recommended:** `1`  
-**Undo:** `0`
-
----
-
-## Search & Web Integration
-
 ### Disable Bing Search
 **Info:** This feature disables Bing integration in Windows Search.  
 **Registry:** `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search`  
@@ -75,9 +227,40 @@
 **Recommended:** `1`  
 **Undo:** `0`
 
----
+### Align Start button to left
+**Info:** This feature will align the Start button to left  
+**Registry:** `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced`  
+**Value:** `TaskbarAl`  
+**Recommended:** `0`  
+**Undo:** `1`
 
-## Window Management
+### Pin more Apps on start menu
+**Info:** This feature will allow pinning more Apps on start menu  
+**Registry:** `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced`  
+**Value:** `Start_Layout`  
+**Recommended:** `1`  
+**Undo:** `0`
+
+### Enable Dark Mode for Apps
+**Info:** This feature enables Dark Mode for apps in Windows 11.  
+**Registry:** `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize`  
+**Value:** `AppsUseLightTheme`  
+**Recommended:** `0`  
+**Undo:** `1`
+
+### Enable Dark Mode for System
+**Info:** This feature enables Dark Mode for Windows system UI (e.g., taskbar, start menu).  
+**Registry:** `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize`  
+**Value:** `SystemUsesLightTheme`  
+**Recommended:** `0`  
+**Undo:** `1`
+
+### Disable Transparency Effects
+**Info:** This feature disables transparency effects for Start menu, taskbar, and other surfaces.  
+**Registry:** `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize`  
+**Value:** `EnableTransparency`  
+**Recommended:** `0`  
+**Undo:** `1`
 
 ### Disable Snap Assist Flyout
 **Info:** This feature disables the Snap Assist flyout, which appears when you snap a window.  
@@ -85,6 +268,36 @@
 **Value:** `EnableSnapAssistFlyout`  
 **Recommended:** `0`  
 **Undo:** `1`
+
+---
+
+## Gaming
+
+### Disable Game DVR
+**Info:** This feature will disable Game DVR.  
+**Registry 1:** `HKEY_CURRENT_USER\System\GameConfigStore`
+- `GameDVR_Enabled = 0`
+- `GameDVR_FSEBehaviorMode = 2`
+**Registry 2:** `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\ApplicationManagement\AllowGameDVR`
+- `value = 0`
+**Undo:**
+- `GameDVR_Enabled = 1`
+- `GameDVR_FSEBehaviorMode = 0`
+- `value = 1`
+
+### Disable Power Throttling
+**Info:** This feature will disable Power Throttling.  
+**Registry:** `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling`  
+**Value:** `PowerThrottlingOff`  
+**Recommended:** `1`  
+**Undo:** `0`
+
+### Disable Visual Effects
+**Info:** Turns off visual effects like animations and shadows in Windows to boost performance.  
+**Registry:** `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects`  
+**Value:** `VisualFXSetting`  
+**Recommended:** `0`  
+**Undo:** `2`
 
 ---
 
@@ -119,102 +332,95 @@
 
 ---
 
-## Power & Shutdown
+## AI (Copilot & Recall)
 
-### Disable Hibernation
-**Info:** Hibernation is mostly useful for laptops... Disabling it frees resources and avoids confusion by hiding the Hibernate option...  
-**Registry 1:** `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power` → `HibernateEnabled = 0`  
-**Registry 2:** `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings` → `ShowHibernateOption = 0`  
-**Command:** `powercfg /hibernate off`  
-**Undo:** `HibernateEnabled = 1`, `ShowHibernateOption = 1`, `powercfg /hibernate on`
-
-### Speed Up Shutdown Time
-**Info:** This feature reduces the WaitToKillServiceTimeout value...  
-**Registry:** `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control`  
-**Value:** `WaitToKillServiceTimeout`  
-**Recommended:** `"1000"`  
-**Undo:** `"5000"`
-
----
-
-## UI & Personalization
-
-### Enable Dark Mode for Apps
-**Info:** This feature enables Dark Mode for apps in Windows 11.  
-**Registry:** `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize`  
-**Value:** `AppsUseLightTheme`  
-**Recommended:** `0`  
-**Undo:** `1`
-
-### Enable Dark Mode for System
-**Info:** This feature enables Dark Mode for Windows system UI (e.g., taskbar, start menu).  
-**Registry:** `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize`  
-**Value:** `SystemUsesLightTheme`  
-**Recommended:** `0`  
-**Undo:** `1`
-
-### Disable Transparency Effects
-**Info:** This feature disables transparency effects for Start menu, taskbar, and other surfaces.  
-**Registry:** `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize`  
-**Value:** `EnableTransparency`  
-**Recommended:** `0`  
-**Undo:** `1`
-
-### Don't use personalized lock screen
-**Info:** This feature will disable the personalized lock screen.  
-**Registry:** `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Personalization`  
-**Value:** `NoLockScreen`  
-**DoFeature sets:** `1`  
-**Undo:** `0`
-
-### Enable Verbose Logon status messages
-**Info:** This method allows you to see what processes are hanging when shutting down and turning on the machine.  
-**Registry:** `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System`  
-**Value:** `VerboseStatus`  
+### Don't Show Copilot in Taskbar
+**Info:** This feature will disable Copilot in Taskbar.  
+**Registry:** `HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\WindowsCopilot`  
+**Value:** `TurnOffWindowsCopilot`  
 **Recommended:** `1`  
 **Undo:** `0`
 
----
+### Turn off Recall in Windows 11
+**Info:** This will remove Recall from Windows 11 24H2  
+**Registry:** `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsAI`  
+**Value:** `AllowRecallEnablement`  
+**Recommended:** `0`  
+**Undo:** `1`
 
-## File Explorer & Context Menus
-
-### Show Full context menus in Windows 11
-**Info:** This feature will enable full context menus  
-**Registry:** `HKEY_CURRENT_USER\SOFTWARE\CLASSES\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32`  
-**Value:** `(Default)` set to empty string  
-**Undo:** Deletes `Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}`
-
-### Speed Up Menu Show Delay
-**Info:** Speeds up the appearance of menus and submenus...  
-**Registry:** `HKEY_CURRENT_USER\Control Panel\Desktop`  
-**Value:** `MenuShowDelay`  
-**Recommended:** `"10"`  
-**Undo:** `"400"`
+### Disable Click to Do (Only Copilot+ PCs)
+**Info:** Disables Click to Do entirely, including its context menu entry which uses on-device AI to suggest actions based on screen content. Only available on Copilot+ PCs with Windows 11 24H2 or newer.  
+**Registry:** `HKEY_CURRENT_USER\Software\Microsoft\Windows\Shell\ClickToDo`  
+**Value:** `DisableClickToDo`  
+**Recommended:** `1`  
+**Undo:** `0`
+**Notes:** Only available on Copilot+ PCs (Windows 11 24H2 or newer, requires NPU).
 
 ---
 
-## Performance & Multimedia Scheduling
+## Ads & Recommendations
 
-### Optimize System Responsiveness
-**Info:** Enhances system responsiveness by prioritizing CPU resources for foreground tasks...  
-**Registry:** `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile`  
-**Value:** `SystemResponsiveness`  
-**Recommended:** `10`  
-**Undo:** `20`
+### Disable File Explorer Ads
+**Info:** Disables File Explorer ads (sync provider notifications).  
+**Registry:** `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced`  
+**Value:** `ShowSyncProviderNotifications`  
+**Recommended:** `0`  
+**Undo:** `1`  
 
-### Disable Network Throttling
-**Info:** Disables the Windows network throttling mechanism...  
-**Registry:** `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile`  
-**Value:** `NetworkThrottlingIndex`  
-**Recommended:** `0xFFFFFFFF` (decimal 4294967295)  
-**Undo:** `10`
+### Disable Finish Setup Ads
+**Info:** Disables “Finish setting up your device” suggestions (SCOOBE prompts).  
+**Registry:** `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\UserProfileEngagement`  
+**Value:** `ScoobeSystemSettingEnabled`  
+**Recommended:** `0`  
+**Undo:** `1`  
 
----
+### Disable Lock Screen Tips and Ads
+**Info:** Disables lock screen tips / overlays and related content delivery entries.  
+**Registry:** `HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager`  
+**Values:** `RotatingLockScreenOverlayEnabled`, `SubscribedContent-338387Enabled`  
+**Recommended:** `0`  
+**Undo:** `1`  
 
-## System & Diagnostics
+### Disable Personalized Ads
+**Info:** Disables personalized ads by turning off the advertising ID.  
+**Registry:** `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo`  
+**Value:** `Enabled`  
+**Recommended:** `0`  
+**Undo:** `1`  
 
-### Show BSOD details instead of sad smiley
-**Info:** This method displays the full classic BSOD with technical error details instead of the simplified sad face version.  
-**Registry:** `HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\CrashControl`  
-**Values:** `DisplayParameters = 1`, `DisableEmoticon = 1`  
-**Undo:** `DisplayParameters = 0`, `DisableEmoticon = 0`
+### Disable Settings Ads
+**Info:** Disables suggestions/ads inside the Settings app.  
+**Registry:** `HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager`  
+**Values:** `SubscribedContent-338393Enabled`, `SubscribedContent-353694Enabled`, `SubscribedContent-353696Enabled`  
+**Recommended:** `0`  
+**Undo:** `1`  
+
+### Disable Start menu Ads
+**Info:** Disables Start menu recommendations/ads.  
+**Registry:** `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced`  
+**Value:** `Start_IrisRecommendations`  
+**Recommended:** `0`  
+**Undo:** `1`  
+
+### Disable Tailored experiences
+**Info:** Disables tailored experiences (personalized tips, ads, and recommendations using diagnostic data).  
+**Registry:** `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Privacy`  
+**Value:** `TailoredExperiencesWithDiagnosticDataEnabled`  
+**Recommended:** `0`  
+**Undo:** `1`  
+
+### Disable General Tips and Ads
+**Info:** Disables general tips, suggestions, and content delivery notifications.  
+**Registry:** `HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager`  
+**Value:** `SubscribedContent-338389Enabled`  
+**Recommended:** `0`  
+**Undo:** `1`  
+
+### Disable Welcome Experience Ads
+**Info:** Disables “Welcome experience” suggestions/ads.  
+**Registry:** `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager`  
+**Value:** `SubscribedContent-310093Enabled`  
+**Recommended:** `0`  
+**Undo:** `1`  
+
+
