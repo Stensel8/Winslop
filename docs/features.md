@@ -428,7 +428,8 @@
 
 ---
 
-## Plugins
+## Plugins <a name="plugins"></a>
+
 
 > Plugins are PowerShell scripts that run additional tweaks or external tools.
 > Some plugins require Administrator privileges.
