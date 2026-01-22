@@ -5,7 +5,7 @@
 Quick links:
 - Feature Reference: [features.md](features.md)
 - Plugins section in Feature Reference: [features.md#plugins](features.md#plugins)
-
+- Extensions Reference: [extensions.md](extensions.md)
 
 ## Quick start
 
