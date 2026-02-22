@@ -5,8 +5,6 @@
 > 
 > “Slop” = stuff that ships by default, wastes resources, and takes control away, while doing basically nothing for you
 
-<img width="1536" height="1024" alt="Winslop" src="https://github.com/user-attachments/assets/3c165b1a-22c2-4122-bc9a-a305ef07dbc2" />
-
 This started as a joke.
 Then Microsoft said “slop vs sophistication” out loud and it stopped being one.
 If this tool needs marketing, it probably shouldnt exist 😆
