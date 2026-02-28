@@ -298,14 +298,14 @@
 **Recommended:** `1`  
 **Undo:** `0`
 
-### Show Widgets
+### Disable Widgets
 **Supported on:** Windows 11  
-**Info:** Enables the Widgets button / Widgets experience on the taskbar (policy based).  
+**Info:** Enables the Widgets button / Widgets experience on the taskbar (policy based) that displays personalized news, weather, calendar, and other information.  
 **Registry (CU):** `HKEY_CURRENT_USER\Software\Policies\Microsoft\Dsh`  
 **Registry (LM):** `HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Dsh`  
 **Value:** `AllowNewsAndInterests`  
-**Recommended:** `1`  
-**Undo:** `0`
+**Recommended:** `0`  
+**Undo:** `1`
 
 ### Disable News and Interests
 **Supported on:** Windows 10 (News & Interests / Feeds). Not applicable on Windows 11.  
