@@ -173,6 +173,20 @@ Consider this stress relief with a UI.
 </details>
 
 <details>
+<summary><strong>Is "Slopr" even a real word?</strong></summary>
+
+Not really.  
+Its a constructed name
+
+**Winslopr** is a made-up tool name, somewhere between **cleaner**, **remover**, and something that just sounds like it belongs in a Windows utility folder.
+
+"Sloper" isnt a real word in this context.  
+But **Winslopr** still reads like one: the thing that removes the slop
+
+So no, the word didn’t exist. Now it does
+</details>
+
+<details>
 <summary><strong>What is Winslop written in?</strong></summary>
 
 C# with WinUI 3. Started as a fork of CrapFixer, rebuilt from scratch to be smaller and more focused.
